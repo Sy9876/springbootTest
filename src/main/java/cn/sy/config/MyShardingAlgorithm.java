@@ -39,6 +39,13 @@ public class MyShardingAlgorithm implements PreciseShardingAlgorithm<Integer> {
 		Integer v = shardingValue.getValue();
 		String result = routingMap.get(v);
 		
+		if(result==null) {
+			for(String s : availableTargetNames) {
+				result = s;
+				break;
+			}
+		}
+		
 		logger.info(" routing result: " + result);
 		return result;
 	}
