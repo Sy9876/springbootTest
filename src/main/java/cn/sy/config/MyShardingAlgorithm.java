@@ -14,27 +14,40 @@ public class MyShardingAlgorithm implements PreciseShardingAlgorithm<Integer> {
 	
 	Map<Integer, String> routingMap = new HashMap<>();
 	
+//	String defaultTableName = "t_shop_order_0";
+	
 	public MyShardingAlgorithm() {
-		routingMap.put(1, "t_order_1");
-		routingMap.put(2, "t_order_0");
-		routingMap.put(3, "t_order_1");
-		routingMap.put(4, "t_order_0");
-		routingMap.put(5, "t_order_1");
-		routingMap.put(6, "t_order_0");
-		routingMap.put(7, "t_order_1");
-		routingMap.put(8, "t_order_0");
-		
+		routingMap.put(1, "1");
+		routingMap.put(2, "2");
+		routingMap.put(3, "3");
+		routingMap.put(4, "4");
+		routingMap.put(5, "5");
+		routingMap.put(6, "6");
+		routingMap.put(7, "7");
+		routingMap.put(8, "8");
+		routingMap.put(9, "9");
+		routingMap.put(10, "0");
+		routingMap.put(11, "1");
+		routingMap.put(12, "2");
+		routingMap.put(13, "3");
+		routingMap.put(14, "4");
+		routingMap.put(15, "5");
+		routingMap.put(16, "6");
+		routingMap.put(17, "7");
+		routingMap.put(18, "8");
+		routingMap.put(19, "9");
+		routingMap.put(20, "0");
 	}
 	
 	@Override
 	public String doSharding(Collection<String> availableTargetNames, PreciseShardingValue<Integer> shardingValue) {
 		
-		logger.info("doSharding. ");
-		String atn = printAvailableTargetNames(availableTargetNames);
-		logger.info(" availableTargetNames: " + atn);
-		
-		String sv =  printShardingValue(shardingValue);
-		logger.info(" shardingValue: " + sv);
+//		logger.info("doSharding. ");
+//		String atn = printAvailableTargetNames(availableTargetNames);
+//		logger.info(" availableTargetNames: " + atn);
+//		
+//		String sv =  printShardingValue(shardingValue);
+//		logger.info(" shardingValue: " + sv);
 		
 		Integer v = shardingValue.getValue();
 		String result = routingMap.get(v);
@@ -44,6 +57,9 @@ public class MyShardingAlgorithm implements PreciseShardingAlgorithm<Integer> {
 				result = s;
 				break;
 			}
+		}
+		else {
+			result = shardingValue.getLogicTableName() + "_" + result;
 		}
 		
 		logger.info(" routing result: " + result);

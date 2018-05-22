@@ -19,7 +19,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   	</typeAliases>	
   	
   	<mappers>      
-	  <mapper resource="cn/sy/mapper/DriverMapper.xml" />
+	  
 	</mappers>
   	
 </configuration>
