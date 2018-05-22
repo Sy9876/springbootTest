@@ -18,24 +18,52 @@ CREATE TABLE `s_system_log` (
 
 -- insert into s_system_log(OPERATION) values('/test');
 -- select * from s_system_log;
-
-create table t_user (
-  user_id int not null,
-  user_name varchar(255) not null,
-  primary key (user_id)
+CREATE TABLE IF NOT EXISTS t_product (
+  id  INT NOT NULL,
+  name VARCHAR(255),
+  price INT,
+  PRIMARY KEY (id)
 );
 
-create table t_order_0 (
-  order_id int not null,
-  user_id  int not null,
-  user_name varchar(255),
-  primary key (order_id)
+CREATE TABLE IF NOT EXISTS t_user (
+  id  INT NOT NULL,
+  name VARCHAR(255),
+  PRIMARY KEY (id)
 );
 
-create table t_order_1 (
-  order_id int not null,
-  user_id  int not null,
-  user_name varchar(255),
-  primary key (order_id)
+CREATE TABLE IF NOT EXISTS t_shop (
+  id  INT NOT NULL,
+  name VARCHAR(255),
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS t_order_0 (
+  order_id INT NOT NULL,
+  user_id  INT NOT NULL,
+  user_name  VARCHAR(255),
+  PRIMARY KEY (order_id)
+);
+
+CREATE TABLE IF NOT EXISTS t_order_item_0 (
+  item_id  INT NOT NULL AUTO_INCREMENT,
+  order_id INT NOT NULL,
+  user_id  INT NOT NULL,
+  item_name VARCHAR(255),
+  PRIMARY KEY (item_id)
+);
+
+CREATE TABLE IF NOT EXISTS t_shop_order_0 (
+  order_id INT NOT NULL,
+  shop_id  INT NOT NULL,
+  shop_name  VARCHAR(255),
+  PRIMARY KEY (order_id)
+);
+
+CREATE TABLE IF NOT EXISTS t_shop_order_item_0 (
+  item_id  INT NOT NULL AUTO_INCREMENT,
+  order_id INT NOT NULL,
+  shop_id  INT NOT NULL,
+  item_name VARCHAR(255),
+  PRIMARY KEY (item_id)
 );
 
