@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 import io.shardingjdbc.core.api.algorithm.sharding.PreciseShardingValue;
 import io.shardingjdbc.core.api.algorithm.sharding.standard.PreciseShardingAlgorithm;
 
+@Deprecated
 public class MyShardingAlgorithm implements PreciseShardingAlgorithm<Integer> {
 	private static Logger logger = Logger.getLogger(MyShardingAlgorithm.class);
 	
@@ -62,7 +63,7 @@ public class MyShardingAlgorithm implements PreciseShardingAlgorithm<Integer> {
 			result = shardingValue.getLogicTableName() + "_" + result;
 		}
 		
-		logger.info(" routing result: " + result);
+//		logger.info(" routing result: " + result);
 		return result;
 	}
 

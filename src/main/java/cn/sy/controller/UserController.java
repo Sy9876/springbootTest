@@ -28,6 +28,15 @@ public class UserController {
 	}
     
     @ResponseBody
+    @RequestMapping("/userOrUser")
+    public List<User> userOrUser(int user1, int user2) {
+		List<User> result = userService.findByIds(user1, user2);
+		
+		return result;
+		
+	}
+    
+    @ResponseBody
     @RequestMapping("/user")
     public User users(int user_id) {
 		User result = userService.findById(user_id);

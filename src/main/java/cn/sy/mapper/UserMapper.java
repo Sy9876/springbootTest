@@ -13,6 +13,8 @@ public interface UserMapper {
 
     List<User> findAll();
     
+    List<User> findByIds(@Param("user_id1") int user_id1, @Param("user_id2") int user_id2);
+    
     User findById(@Param("user_id") int user_id);
     
 }

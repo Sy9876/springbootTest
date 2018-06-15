@@ -105,6 +105,16 @@ public class OrderController {
 	}
     
     @ResponseBody
+    @RequestMapping("/findById")
+    public Order findById(int order_id) {
+    	Order result = orderService.findById(order_id);
+		
+		return result;
+		
+	}
+    
+    
+    @ResponseBody
     @RequestMapping("/findByUser")
     public List<Order> findByUser(int user_id) {
 		List<Order> result = orderService.findByUser(user_id);

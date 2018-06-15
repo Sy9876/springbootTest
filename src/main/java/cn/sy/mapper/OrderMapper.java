@@ -26,6 +26,8 @@ public interface OrderMapper {
 
     List<Order> findAll();
     
+    Order findById(@Param("order_id") int order_id);
+    
     List<Order> findByUser(@Param("user_id") int user_id);
     
     List<ShopOrder> findByShop(@Param("shop_id") int shop_id);

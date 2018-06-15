@@ -44,6 +44,14 @@ public class OrderService {
 		
 	}
 	
+	public Order findById(int order_id) {
+		Order result = orderMapper.findById(order_id);
+		
+		return result;
+		
+	}
+	
+	
 	public List<Order> findByUser(int user_id) {
 		List<Order> result = orderMapper.findByUser(user_id);
 		
@@ -91,7 +99,7 @@ public class OrderService {
     	int orderId = 0;
     	
     	
-    	System.out.println("OrderService createOrder ");
+//    	System.out.println("OrderService createOrder ");
     	
     	orderId = newUserOrder(user, item);
     	newShopOrder(orderId, item, shop);
@@ -135,7 +143,7 @@ public class OrderService {
 			e.printStackTrace();
 		}
 
-    	System.out.println("OrderService create user order end. return: " + order_id);
+//    	System.out.println("OrderService create user order end. return: " + order_id);
     	
     	return order_id;
     }
@@ -157,8 +165,8 @@ public class OrderService {
     	
     	int ret = 0;
     	
-    	System.out.println("OrderService create shop order. "
-				+ "  order_id=" + order_id + "  shop_id=" + shop_id + "  item_id=" + item_id);
+//    	System.out.println("OrderService create shop order. "
+//				+ "  order_id=" + order_id + "  shop_id=" + shop_id + "  item_id=" + item_id);
     	
     	try {
     		shopOrder = new ShopOrder();
@@ -178,7 +186,7 @@ public class OrderService {
 			throw e;
 		}
 
-    	System.out.println("OrderService create shop order end. return: " + ret);
+//    	System.out.println("OrderService create shop order end. return: " + ret);
     }
 
     public String userName(int user_id) {

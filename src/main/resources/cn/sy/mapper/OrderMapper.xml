@@ -29,6 +29,12 @@
 		ORDER BY order_id
 	</select>
 	
+	<select id="findById" resultType="cn.sy.domain.Order">
+		SELECT order_id, user_id, user_name
+		FROM t_order
+		WHERE order_id = #{order_id,jdbcType=INTEGER}
+	</select>
+	
 	<select id="findByUser" resultType="cn.sy.domain.Order">
 		SELECT order_id, user_id, user_name
 		FROM t_order
@@ -59,6 +65,7 @@
 		FROM t_order o
 		JOIN t_order_item oi on o.order_id=oi.order_id
 		ORDER BY o.order_id DESC
+		LIMIT 1000
 	</select>  <!--  and o.user_id=oi.user_id  -->
 	
 	<select id="findOrderWithPrice" resultType="cn.sy.domain.OrderWithItemAndPrice">
@@ -67,6 +74,7 @@
 		JOIN t_order_item oi on o.order_id=oi.order_id
 		LEFT JOIN t_product p on oi.item_name=p.name
 		ORDER BY o.order_id DESC
+		LIMIT 1000
 	</select>  <!--  and o.user_id=oi.user_id  -->
 	
 </mapper>
