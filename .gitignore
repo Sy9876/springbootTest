@@ -5,3 +5,5 @@ logs/
 target/
 .vscode/
 *.iml
+.idea/
+bin/

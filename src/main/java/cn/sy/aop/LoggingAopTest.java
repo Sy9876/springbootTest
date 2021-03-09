@@ -1,18 +1,15 @@
 package cn.sy.aop;
 
-import org.apache.log4j.Logger;
-import org.aspectj.lang.JoinPoint;
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
+@Slf4j
 public class LoggingAopTest {
-	private static Logger logger = Logger.getLogger(LoggingAopTest.class);
 
 	//@Around("execution(* cn.sy..*.DriverService.*(..))")
 	@Around("execution(* cn.sy..*.DriverController.*(..))")
@@ -20,14 +17,14 @@ public class LoggingAopTest {
 		Object o = null;
 		try {
 			//System.out.println("LoggingAopTest start: " + joinPoint);
-			logger.info("LoggingAopTest start: " + joinPoint);
+			log.info("LoggingAopTest start: " + joinPoint);
 			
 			//System.out.println("LoggingAopTest long string: " + joinPoint.toLongString());
-			logger.info("LoggingAopTest long string: " + joinPoint.toLongString());
+			log.info("LoggingAopTest long string: " + joinPoint.toLongString());
 			
 			for(Object arg : joinPoint.getArgs()) {
 				//System.out.println("args: " + arg);
-				logger.info("args: " + arg);
+				log.info("args: " + arg);
 			}
 
 			long start = System.currentTimeMillis();
@@ -35,14 +32,14 @@ public class LoggingAopTest {
 			long end = System.currentTimeMillis();
 			
 			//System.out.println("LoggingAopTest Completed in " + (end - start) + " ms: " + joinPoint);
-			logger.info("LoggingAopTest Completed in " + (end - start) + " ms: " + joinPoint);
+			log.info("LoggingAopTest Completed in " + (end - start) + " ms: " + joinPoint);
 
 			return o;
 			
 		} catch (Throwable e) {
 			e.printStackTrace();
 			//System.out.println("LoggingAopTest failed: " + joinPoint);
-			logger.info("LoggingAopTest failed: " + joinPoint);
+			log.info("LoggingAopTest failed: " + joinPoint);
 		}
 		
 		return o;
